@@ -58,6 +58,7 @@ module.exports = {
     '@typescript-eslint/no-unused-expressions': [
       'error', { 'allowTernary': true }
     ],
+    'no-unused-vars': 'off',
     '@typescript-eslint/prefer-for-of': 'error',
     '@typescript-eslint/prefer-function-type': 'error',
     'quotes': 'off',
