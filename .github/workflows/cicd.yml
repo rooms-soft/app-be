@@ -32,16 +32,3 @@ jobs:
 
       - name: Run Tests
         run: npm run test
-
-      - name: Deploy to Production Server
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          HOST: ${{ secrets.HOST }}
-          USER: ${{ secrets.USER }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
-        run: |
-          echo "${SSH_KEY}" > key.pem
-          chmod 600 key.pem
-          scp -i key.pem -r ./dist $USER@$HOST:$DEPLOY_PATH
-          ssh -i key.pem $USER@$HOST "cd $DEPLOY_PATH && npm install --production && pm2 restart all"
-          rm -f key.pem
