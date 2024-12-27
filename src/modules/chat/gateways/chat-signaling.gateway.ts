@@ -27,10 +27,6 @@ export class ChatSignalingGateway {
 
     const recipientSocketId = this.sessionToSocketMap.get(recipientId);
 
-    if (!recipientSocketId) {
-      throw new Error('Something went wrong');
-    }
-
     this.server.to(recipientSocketId).emit(ChatSignalEventEnum.SDP_EVENT, {
       senderId,
       type,
