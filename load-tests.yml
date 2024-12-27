@@ -1,18 +1,16 @@
 config:
   target: "http://localhost:3000"
   phases:
-    - duration: 30
+    - duration: 20
       arrivalRate: 30
-    - duration: 30
-      arrivalRate: 40
-    - duration: 30
-      arrivalRate: 60
+    - duration: 20
+      arrivalRate: 50
   defaults:
     headers:
       Content-Type: "application/json"
 
 scenarios:
-  - name: Auth and Fetch User Data
+  - name: Auth
     flow:
       - post:
           url: "/auth/login"
@@ -22,7 +20,7 @@ scenarios:
       - think: 2
       - get:
           url: "/auth/me"
-  - name: Collections Operations
+  - name: Chat
     flow:
       - post:
           url: "/auth/login"
