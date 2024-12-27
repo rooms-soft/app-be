@@ -1,0 +1,38 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 30
+      arrivalRate: 30
+    - duration: 30
+      arrivalRate: 40
+    - duration: 30
+      arrivalRate: 60
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: Auth and Fetch User Data
+    flow:
+      - post:
+          url: "/auth/login"
+          json:
+            username: "user_1"
+            password: "12345"
+      - think: 2
+      - get:
+          url: "/auth/me"
+  - name: Collections Operations
+    flow:
+      - post:
+          url: "/auth/login"
+          json:
+            username: "user_1"
+            password: "12345"
+      - think: 2
+      - get:
+          url: "/chat"
+      - post:
+          url: "/chat"
+          json:
+            name: "Test chat"

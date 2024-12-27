@@ -1,7 +1,7 @@
 import { Body, Controller, Post, UseGuards, Request, Get, Inject } from '@nestjs/common';
-import { AuthDto } from '@modules/auth/dtos/auth.dto';
-import { AuthService } from '@modules/auth/services/auth.service';
 import { User } from '@prisma/client';
+import { AuthService } from '../services/auth.service';
+import { AuthDto } from '../dtos/auth.dto';
 import { LocalGuard } from '../../../security/guards/local-guard';
 import { JwtGuard } from '../../../security/guards/jwt-guard';
 
